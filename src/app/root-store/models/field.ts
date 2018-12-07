@@ -1,0 +1,63 @@
+import { Time } from "@angular/common";
+
+interface BaseField {
+  uuid?: number;
+  name: string;
+  slug: string;
+  dataType: string;
+  helpText?: string;
+  validators?: any[];
+  displayOptions?: {};
+}
+
+export interface ChoiceField extends BaseField {
+  value?: string;
+  choices: string[];
+}
+
+export interface MultipleChoiceField extends BaseField {
+  value?: string;
+  choices: string[];
+}
+
+export interface DateField extends BaseField {
+  value?: Date;
+}
+
+export interface TimeField extends BaseField {
+  value?: Time;
+}
+
+export interface TimeSpanField extends BaseField {
+  from?: Date;
+  to?: Date; 
+}
+
+/**
+ * File or document field.
+ */
+export interface FileField extends BaseField {
+  value?: File;
+}
+
+export interface NumberField extends BaseField {
+  value?: number;
+  decimalSpaces?: number;
+}
+
+export interface NumberRangeField extends BaseField {
+  from?: number;
+  to?: number;
+}
+
+export interface TextField extends BaseField {
+  value?: string;
+}
+
+export interface LongTextField extends BaseField {
+  value?: string;
+}
+
+export interface YesNoField extends BaseField {
+  value?: boolean;
+}
