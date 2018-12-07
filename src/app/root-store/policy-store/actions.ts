@@ -120,25 +120,27 @@ export class CreateSamplesFailure implements Action {
   constructor(public payload: APIError) {}
 }
 
-/**
- * Export a type alias of all actions in this action group
- * so that reducers can easily compose action types
- */
 export type Actions
-            = GetPoliciesRequest
-            | GetPoliciesSuccess
-            | GetPoliciesFailure
-            | SelectRisk
-            | DeSelectRisk
-            | CreateRiskRequest
-            | CreatePoliciesuccess
-            | CreateRiskFailure
-            | UpdateRiskRequest
-            | UpdatePoliciesuccess
-            | UpdateRiskFailure
-            | DeleteRiskRequest
-            | DeletePoliciesuccess
-            | DeleteRiskFailure
-            | CreateSamplePoliciesRequest
-            | CreateSamplePoliciesSuccess
-            | CreateSamplePoliciesFailure;
+              = List
+              | ListSuccess
+              | ListFailure
+              | Retrieve
+              | RetrieveSuccess
+              | RetrieveFailure
+              | SelectPolicy
+              | DeSelectPolicy
+              | Create
+              | CreateSuccess
+              | CreateFailure
+              | Update
+              | UpdateSuccess
+              | UpdateFailure
+              | Delete
+              | DeleteSuccess
+              | DeleteFailure
+              | Clone
+              | CloneSuccess
+              | CloneFailure
+              | CreateSamples
+              | CreateSamplesSuccess
+              | CreateSamplesFailure;
