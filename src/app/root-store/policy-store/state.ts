@@ -1,4 +1,9 @@
-import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
+import {
+  createEntityAdapter,
+  EntityAdapter,
+  EntityState
+} from '@ngrx/entity';
+
 import {
   APIError,
   Policy,
@@ -13,7 +18,7 @@ export const featureAdapter: EntityAdapter<
   }
 })
 
-export interface State {
+export interface State extends EntityState<Policy> {
   policies?: Policy[];
   selectedPolicy?: Policy,
   formValues: Policy | null,
