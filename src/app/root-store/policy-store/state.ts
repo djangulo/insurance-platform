@@ -13,9 +13,7 @@ export const featureAdapter: EntityAdapter<
   Policy
 > = createEntityAdapter<Policy>({
   selectId: model => model.uuid,
-  sortComparer: (a: Policy, b: Policy): number => {
-    return b.createdAt.toString().localeCompare(a.createdAt.toString());
-  }
+  sortComparer: false
 })
 
 export interface State extends EntityState<Policy> {

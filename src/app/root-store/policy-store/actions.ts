@@ -1,4 +1,5 @@
 import { Action } from '@ngrx/store';
+import { Update as ngrxUpdate } from '@ngrx/entity';
 
 import {
   APIError,
@@ -7,14 +8,14 @@ import {
 } from './../models';
 
 export enum ActionTypes {
+  SELECT_POLICY = '[Policy Container] Select policy',
+  DESELECT_POLICY = '[Policy Container] DeSelect policy',
   LIST = '[Policy Container] List policies',
   LIST_SUCCESS = '[Policy API] List policies success',
   LIST_FAILURE = '[Policy API] List policies failure',
   RETRIEVE = '[Policy Container] Retrieve policy',
   RETRIEVE_SUCCESS = '[Policy API] Retrieve policy success',
   RETRIEVE_FAILURE = '[Policy API] Retrieve policy failure',
-  SELECT_POLICY = '[Policy Container] Select policy',
-  DESELECT_POLICY = '[Policy Container] DeSelect policy',
   CREATE = '[Policy Container] Request policy creation',
   CREATE_SUCCESS = '[Policy API] Policy creation success',
   CREATE_FAILURE = '[Policy API] Policy creation failure',
@@ -32,92 +33,93 @@ export enum ActionTypes {
   CREATE_SAMPLE_POLICIES_FAILURE = '[Policy API] Create sample policies failure',
 };
 
+export class SelectPolicy implements Action {
+  public readonly type = ActionTypes.SELECT_POLICY;
+  constructor(public payload: { policy: Policy }) {}
+}
+export class DeSelectPolicy implements Action {
+  public readonly type = ActionTypes.DESELECT_POLICY;
+}
 export class List implements Action {
   public readonly type = ActionTypes.LIST;
 }
 export class ListSuccess implements Action {
   public readonly type = ActionTypes.LIST_SUCCESS;
-  constructor(public payload: PaginatedAPIResponse) {}
+  constructor(public payload: { items: PaginatedAPIResponse }) {}
 }
 export class ListFailure implements Action {
   public readonly type = ActionTypes.LIST_FAILURE;
-  constructor(public payload: APIError) {}
+  constructor(public payload: { error: APIError }) {}
 }
 export class Retrieve implements Action {
   public readonly type = ActionTypes.RETRIEVE;
 }
 export class RetrieveSuccess implements Action {
   public readonly type = ActionTypes.RETRIEVE_SUCCESS;
-  constructor(public payload: Policy) {}
+  constructor(public payload: { policy: Policy }) {}
 }
 export class RetrieveFailure implements Action {
   public readonly type = ActionTypes.RETRIEVE_FAILURE;
-  constructor(public payload: APIError) {}
-}
-export class SelectPolicy implements Action {
-  public readonly type = ActionTypes.SELECT_POLICY;
-  constructor(public payload: Policy) {}
-}
-export class DeSelectPolicy implements Action {
-  public readonly type = ActionTypes.DESELECT_POLICY;
+  constructor(public payload: { error: APIError }) {}
 }
 export class Create implements Action {
   public readonly type = ActionTypes.CREATE;
-  constructor (public payload: Policy) {}
+  constructor (public payload: { policy: Policy }) {}
 }
 export class CreateSuccess implements Action {
   public readonly type = ActionTypes.CREATE_SUCCESS;
-  constructor(public payload: Policy) {}
+  constructor(public payload: { policy: Policy }) {}
 }
 export class CreateFailure implements Action {
   public readonly type = ActionTypes.CREATE_FAILURE;
-  constructor(public payload: APIError) {}
+  constructor(public payload: { error: APIError }) {}
 }
 export class Update implements Action {
   public readonly type = ActionTypes.UPDATE;
-  constructor (public payload: Policy) {}
+  constructor (public payload: { policy: Policy }) {}
 }
 export class UpdateSuccess implements Action {
   public readonly type = ActionTypes.UPDATE_SUCCESS;
-  constructor(public payload: Policy) {}
+  constructor(public payload: { policy: ngrxUpdate<Policy> }) {}
 }
 export class UpdateFailure implements Action {
   public readonly type = ActionTypes.UPDATE_FAILURE;
-  constructor(public payload: APIError) {}
+  constructor(public payload: { error: APIError }) {}
 }
 export class Delete implements Action {
   public readonly type = ActionTypes.DELETE;
-  constructor (public payload: Policy) {}
+  constructor (public payload: { uuid: string }) {}
 }
 export class DeleteSuccess implements Action {
   public readonly type = ActionTypes.DELETE_SUCCESS;
+  constructor (public payload: { uuid: string }) {}
 }
 export class DeleteFailure implements Action {
   public readonly type = ActionTypes.DELETE_FAILURE;
-  constructor(public payload: APIError) {}
+  constructor(public payload: { error: APIError }) {}
 }
 export class Clone implements Action {
   public readonly type = ActionTypes.CLONE;
-  constructor(public payload: Policy) {}
+  constructor(public payload: { policy: Policy }) {}
 }
 export class CloneSuccess implements Action {
   public readonly type = ActionTypes.CLONE_SUCCESS;
-  constructor(public payload: Policy) {}
+  constructor(public payload: { policy: Policy }) {}
 }
 export class CloneFailure implements Action {
   public readonly type = ActionTypes.CLONE_FAILURE;
-  constructor(public payload: Policy) {}
+  constructor(public payload: { policy: Policy }) {}
 }
 export class CreateSamples implements Action {
   public readonly type = ActionTypes.CREATE_SAMPLE_POLICIES_REQUEST;
 }
 export class CreateSamplesSuccess implements Action {
   public readonly type = ActionTypes.CREATE_SAMPLE_POLICIES_SUCCESS;
-  constructor(public payload: PaginatedAPIResponse) {}
+  constructor(public payload: { items: PaginatedAPIResponse }) {}
 }
 export class CreateSamplesFailure implements Action {
   public readonly type = ActionTypes.CREATE_SAMPLE_POLICIES_FAILURE;
-  constructor(public payload: APIError) {}
+  constructor(public payload: { error: APIError }) {}
 }
 
 export type Actions
