@@ -1,3 +1,3 @@
 # InsurancePlatform
 
-This project was generated with [Angular CLI]
+Product development application project.
