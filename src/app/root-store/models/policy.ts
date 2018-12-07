@@ -1,3 +1,4 @@
+import { User } from './user';
 import {
   ChoiceField,
   DateField,
@@ -14,6 +15,8 @@ import {
 
 export interface Policy {
   uuid?: string;
+  createdAt?: Date;
+  createdBy?: User;
   organization?: string;
   name?: string;
   slug?: string;

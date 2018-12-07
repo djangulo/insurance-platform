@@ -5,7 +5,7 @@ import {
 } from '@ngrx/store';
 
 import { Policy } from './../models';
-import { featureAdapter, State } from './state';
+import { adapter, State } from './state';
 
 const getError = (state: State): any => state.error;
 const getIsLoading = (state: State): boolean => state.isLoading;
@@ -19,7 +19,7 @@ export const selectPoliciesState: MemoizedSelector<
 
 export const selectPoliciesItems: (
   state: object
-) => Policy[] = featureAdapter.getSelectors(selectPoliciesState).selectAll;
+) => Policy[] = adapter.getSelectors(selectPoliciesState).selectAll;
 
 export const selectPolicyByUuid = (uuid: string) => {
   return createSelector(this.selectPoliciesItems, (allPolicies: Policy[]) => {

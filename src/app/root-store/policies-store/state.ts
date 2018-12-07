@@ -9,7 +9,7 @@ import {
   Policy,
 } from '../models';
 
-export const featureAdapter: EntityAdapter<
+export const adapter: EntityAdapter<
   Policy
 > = createEntityAdapter<Policy>({
   selectId: model => model.uuid,
@@ -24,7 +24,7 @@ export interface State extends EntityState<Policy> {
   error: APIError;
 }
 
-export const initialState: State = featureAdapter.getInitialState(
+export const initialState: State = adapter.getInitialState(
   {
     policies: [],
     selectedInsurancePolicy: null,

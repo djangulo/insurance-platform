@@ -1,7 +1,7 @@
 import { Actions, ActionTypes } from './actions';
-import { featureAdapter, initialState, State } from './state';
+import { adapter, initialState, State } from './state';
 
-export function featureReducer(
+export function policiesReducer(
   state=initialState,
   action: Actions
 ): State {
@@ -26,7 +26,7 @@ export function featureReducer(
       };
     }
     case ActionTypes.LIST_SUCCESS: {
-      return featureAdapter.addAll(action.payload.items.results, {
+      return adapter.addAll(action.payload.items.results, {
         ...state,
         isLoading: false,
         error: null
@@ -47,7 +47,7 @@ export function featureReducer(
       };
     }
     case ActionTypes.RETRIEVE_SUCCESS: {
-      return featureAdapter.addOne(action.payload.policy, {
+      return adapter.addOne(action.payload.policy, {
         ...state,
         isLoading: false,
         error: null
@@ -68,7 +68,7 @@ export function featureReducer(
       };
     }
     case ActionTypes.CREATE_SUCCESS: {
-      return featureAdapter.addOne(action.payload.policy, {
+      return adapter.addOne(action.payload.policy, {
         ...state,
         isLoading: false,
         error: null
@@ -89,7 +89,7 @@ export function featureReducer(
       };
     }
     case ActionTypes.UPDATE_SUCCESS: {
-      return featureAdapter.updateOne(action.payload.policy, {
+      return adapter.updateOne(action.payload.policy, {
         ...state,
         isLoading: false,
         error: null
@@ -110,7 +110,7 @@ export function featureReducer(
       };
     }
     case ActionTypes.DELETE_SUCCESS: {
-      return featureAdapter.removeOne(action.payload.uuid, {
+      return adapter.removeOne(action.payload.uuid, {
         ...state,
         isLoading: false,
         error: null
