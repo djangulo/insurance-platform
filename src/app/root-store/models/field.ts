@@ -1,18 +1,34 @@
 import { Time } from "@angular/common";
 
+export enum FieldTypes {
+  Text = 'Text',
+  LongText = 'Long text',
+  Number = 'Number',
+  NumberRange = 'Number range',
+  YesNo = 'Yes-no',
+  Choice = 'Choice',
+  MultipleChoice = 'Multiple choice',
+  Date = 'Date',
+  Time = 'Time',
+  TimeSpan = 'Time span',
+  File = 'File'
+}
+
 interface BaseField {
-  uuid?: number;
+  uuid?: string;
   name: string;
   slug: string;
-  dataType: string;
+  dataType: FieldTypes;
   helpText?: string;
   validators?: any[];
   displayOptions?: {};
 }
 
+
 export interface ChoiceField extends BaseField {
-  value?: string;
+  value?: number; // Represents the index
   choices: string[];
+  default: number; // Index of default choice  
 }
 
 export interface MultipleChoiceField extends BaseField {
