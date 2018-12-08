@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PolicyStoreModule } from './policy-store/policy-store.module';
+import { PoliciesStoreModule } from './policies-store';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
-  declarations: [],
   imports: [
     CommonModule,
-    PolicyStoreModule
-  ]
+    PoliciesStoreModule,
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([])
+  ],
+  declarations: []
 })
 export class RootStoreModule { }
